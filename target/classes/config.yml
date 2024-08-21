@@ -1,0 +1,3 @@
+# This is the highest distance before the chain starts to pull the entity back.
+# Default is be 3 blocks, minimum is 2 blocks, maximum is 8.
+max_distance: 3

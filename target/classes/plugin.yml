@@ -1,0 +1,8 @@
+name: Chain
+version: '1.0.0'
+main: to.lodestone.chain.ChainPlugin
+api-version: '1.20'
+depend:
+  - CommandAPI
+softdepend:
+  - Bookshelf
