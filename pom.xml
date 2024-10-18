@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>to.lodestone</groupId>
-    <artifactId>Chain</artifactId>
-    <version>1.0.0</version>
+    <artifactId>Chain-Paper</artifactId>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
-    <name>Chain</name>
+    <name>Chain-Paper</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -62,6 +62,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>to.lodestone</groupId>
+            <artifactId>Chain-API</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>1.20.4-R0.1-SNAPSHOT</version>
@@ -76,7 +81,7 @@
         <dependency>
             <groupId>to.lodestone</groupId>
             <artifactId>Bookshelf-API</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.6</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

@@ -1,18 +1,17 @@
 package to.lodestone.chain;
 
 import dev.jorel.commandapi.arguments.EntitySelectorArgument;
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataType;
 import to.lodestone.bookshelfapi.api.command.Command;
 import to.lodestone.bookshelfapi.api.util.MiniMessageUtil;
 
 public class ChainCommand extends Command {
 
+
     public ChainCommand(ChainPlugin plugin) {
         super("chain");
-        aliases("lodestone.chain.commands.chain");
+        permission("lodestone.chain.commands.chain");
         subCommand(new Command("reload")
                 .executes((sender, args) -> {
                     long timeAt = System.currentTimeMillis();
@@ -31,8 +30,8 @@ public class ChainCommand extends Command {
                     }
 
                     targetTwo.setLeashHolder(targetOne);
-                    targetTwo.getPersistentDataContainer().set(ChainPlugin.CHAINED_KEY, PersistentDataType.STRING, targetOne.getUniqueId().toString());
-                    targetOne.getPersistentDataContainer().set(ChainPlugin.CHAINED_KEY, PersistentDataType.STRING, targetTwo.getUniqueId().toString());
+
+                    plugin.chain(targetOne, targetTwo);
                     sender.sendMessage(MiniMessageUtil.deserialize("%s is now chained with %s", targetOne.getName(), targetTwo.getName()));
                 } else {
                     if (sender instanceof Player player) {
@@ -41,9 +40,7 @@ public class ChainCommand extends Command {
                             return;
                         }
 
-                        targetOne.setLeashHolder(player);
-                        targetOne.getPersistentDataContainer().set(ChainPlugin.CHAINED_KEY, PersistentDataType.STRING, player.getUniqueId().toString());
-                        player.getPersistentDataContainer().set(ChainPlugin.CHAINED_KEY, PersistentDataType.STRING, targetOne.getUniqueId().toString());
+                        plugin.chain(player, targetOne);
                         player.sendMessage(MiniMessageUtil.deserialize("%s is now chained with %s.", player.getName(), targetOne.getName()));
                     } else {
                         sender.sendMessage(MiniMessageUtil.deserialize("<red>Only players can supply a single entity"));
