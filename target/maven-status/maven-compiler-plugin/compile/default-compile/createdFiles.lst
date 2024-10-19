@@ -1,3 +1,4 @@
+to\lodestone\chain\data\ChainData.class
 to\lodestone\chain\ChainCommand.class
 to\lodestone\chain\ChainManager.class
 to\lodestone\chain\UnchainCommand.class
